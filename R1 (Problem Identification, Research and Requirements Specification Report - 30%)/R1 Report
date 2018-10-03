@@ -8,6 +8,19 @@
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
 
+Req ID#	| Req Type	| Requirement Source	| Requirement Specification
+-------|---------|------------|---------------|----------------
+RQ1	| Client	| “This project requires students to design and develop an image processing algorithm..”	| The development of an object detection algorithm (ODA) is integral to the project.
+RQ2	| Client	| “…that can detect and classify objects and obstacles for the 8x8 Electric Combat Vehicle.” |	The ODA must be able to identify and categorize individual objects in a real environment.
+RQ3	| Client	| Such techniques may include, but is not limited to, convolutional neural networks and other deep learning options.	| The ODA must be capable of identifying a large variety of objects, both large and small scale.
+RQ4 |	Client	| ”…The algorithm must be compatible with ROS (Robot Operating System)”	| The ODA must support an interface that the ROS architecture can utilize. 
+RQ5 |	Client	| “The algorithm should be efficient and robust and must exhibit high repeatability.”	| The ODA must perform its tasks in an acceptable amount of time, and must operate in a stable state machine framework.
+Since ROS does not operate in real time, neither can ODA.
+RQ6 |	Client | “Sourcing of compatible sensors and controller hardware for compact packaging and deployment.”	| The ODA must utilize sensors and controllers that is compatible with ROS. 
+RQ7	| Client | Write C++/Python code for Obstacle Detection and Classification	The ODA must be developed to be compatible with ROS, so it must be written in either Python or C++ as the programming language.
+RQ8	| Client | Conduct testing and validation in both simulated and physical environment.	|The ODA must support both simulated and physical implementation of the algorithm. The ODA must support testing and debugging in both simulated and physical environments.
+Table 1A – Requirements Specification
+
 6. Definition of Acceptance Tests (3%) - Soso
 
 7. Project Plan (3%)
