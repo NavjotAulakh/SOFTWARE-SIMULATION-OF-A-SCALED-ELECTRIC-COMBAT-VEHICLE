@@ -18,8 +18,23 @@
 | RQ6 | Client | Sourcing of compatible sensors and controller hardware for compact packaging and deployment. | The ODA must utilize sensors and controllers that is compatible with ROS. |
 | RQ7 | Client | Write C++/Python code for Obstacle Detection and Classification | The ODA must be developed to be compatible with ROS, so it must be written in either Python or C++ as the programming language. |
 | RQ8 | Client | Conduct testing and validation in both simulated and physical environment. | The ODA must support both simulated and physical implementation of the algorithm. The ODA must support testing and debugging in both simulated and physical environments. |
-
 Table 1A – Requirements Specification
+
+| Test Case ID#	| Quality Attribute | Test Case Description |
+| ------------- | ------------- | ------------- |
+| TC1 | Compatibility | ODA is accessible by any ROS localization algorithm through a generic interface to generate robot localization. |
+| TC2 | Functional Suitability | ODA will properly identify all distinct objects in the environment. |
+| TC3 | Functional Suitability | ODA will properly categorize objects into Impassable, Passable, and Distant. |
+| TC4 | Functional Suitability | ODA should be able to operate with its full feature set in Gazebo, a simulation software environment. |
+| TC5 | Functional Suitability | ODA should be able to operate with its full feature set when implemented on a ROS compatible hardware device. |
+| TC6 | Performance Efficiency | ODA will complete a designated course in relatively the same amount of time as a comparable laser-based implementation of an object detection algorithm. |
+| TC7 | Usability | ODA should not require any extra user interaction besides installation. |
+| TC8 | Reliability | ODA should operate in a stable state machine and continue running indefinitely. |
+| TC9 | Reliability | ODA should be able to detect and recover from object detection related faults, and sensor disability faults. |
+| TC10 | Security | ODA should not be an accessible security attack surface. |
+| TC11 | Maintainability | ODA should be a modular algorithm that can be easily transplanted into new robotic devices that support ROS |
+| TC12 | Portability | ODA installation should not require much more time to install then ROS alone. It should be an includable library. |
+Table 1B – Test Case Description
 
 6. Definition of Acceptance Tests (3%) - Soso
 
