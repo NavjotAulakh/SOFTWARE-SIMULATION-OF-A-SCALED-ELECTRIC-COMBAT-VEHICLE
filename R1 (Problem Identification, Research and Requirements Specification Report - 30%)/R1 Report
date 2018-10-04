@@ -19,10 +19,6 @@
 | RQ7	| Client | Write C++/Python code for Obstacle Detection and Classification | The ODA must be developed to be compatible with ROS, so it must be written in either Python or C++ as the programming language. |
 | RQ8	| Client | Conduct testing and validation in both simulated and physical environment. | The ODA must support both simulated and physical implementation of the algorithm. The ODA must support testing and debugging in both simulated and physical environments. |
 
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
 
 Table 1A – Requirements Specification
 
