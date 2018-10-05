@@ -7,7 +7,14 @@ test it and validate the algorithm, and  then test it physically with the protot
 For the background and research required for the implementation and build of the environment  it’s important to take count with the set of packages available of ROS, such as GAZEBO which will have the all the interfaces require
 for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment.  For the development of the environment and the simulation of the algorithm all the group members 
 would require to learn and to get involved with multiple navigation and manipulation packages such as husky simulation.
+
 3. Design Process (3%) - nav
+The project requires a robust solution for the image processing algorithm, which must accompanied by a thorough testing phase and 
+implemented according to the requirement specifications. This aspect of the project requires the design process to follow a strict 
+one way model, and the most robust process model that is built up from provided requirement specifications is the Waterfall Model. 
+This model is considered the oldest of the structured SDLC methodologies, but has a very simple approach where you first finish one 
+phase and then most on to the next without ever going back. Each of the stages are built upon the previous stages and has its own 
+project plan. For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. 
 
 4. Scenarios and/or Use Cases (5%) - nav
 
