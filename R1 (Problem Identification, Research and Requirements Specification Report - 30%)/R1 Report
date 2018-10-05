@@ -14,7 +14,10 @@ implemented according to the requirement specifications. This aspect of the proj
 one way model, and the most robust process model that is built up from provided requirement specifications is the Waterfall Model. 
 This model is considered the oldest of the structured SDLC methodologies, but has a very simple approach where you first finish one 
 phase and then most on to the next without ever going back. Each of the stages are built upon the previous stages and has its own 
-project plan. For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. 
+project plan. For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. Following which, the 
+implemenation of certain features is executed, followed by testing of each of these features individually and integrated combination of
+multiple modules. Once the algorithm is thorougly tested and integated, the next phase to be carried out would be deployment onto a simulated
+environment in this term to acceptance testing.
 
 4. Scenarios and/or Use Cases (5%) - nav
 The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and 
