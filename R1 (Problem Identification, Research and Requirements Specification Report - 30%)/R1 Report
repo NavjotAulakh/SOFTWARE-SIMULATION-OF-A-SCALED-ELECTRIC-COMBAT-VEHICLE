@@ -1,10 +1,12 @@
 1. Problem Identification (3%) - Nico 
 The main scope of the project is to design and implement an algorithm for the Electrical combat vehicle that will classify and detect obstacles on ground in the real world with the 8x8 prototype. 
-The main focus of the algorithm is to have a quick reaction in a minimum timeframe possible.  To implement this classification algorithm we will have to first create a simulated environment with the ROS (Robot Operation System), test it and validate the 
-algorithm, and  then test it physically with the prototype on the real world.
+The main focus of the algorithm is to have a quick reaction in a minimum timeframe possible.  To implement this classification algorithm we will have to first create a simulated environment with the ROS (Robot Operation System), 
+test it and validate the algorithm, and  then test it physically with the prototype on the real world.
 
 2. Project-related Background and Research Review (3%) - Nico
-For the background and research required for the implementation and build of the environment  it’s important to take count with the set of packages available of ROS, such as GAZEBO which will have the all the interfaces require for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment.  For the development of the environment and the simulation of the algorithm all the group members would require to learn and to get involved with multiple navigation and manipulation packages such as husky simulation.
+For the background and research required for the implementation and build of the environment  it’s important to take count with the set of packages available of ROS, such as GAZEBO which will have the all the interfaces require
+for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment.  For the development of the environment and the simulation of the algorithm all the group members 
+would require to learn and to get involved with multiple navigation and manipulation packages such as husky simulation.
 3. Design Process (3%) - nav
 
 4. Scenarios and/or Use Cases (5%) - nav
