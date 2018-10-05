@@ -17,6 +17,10 @@ phase and then most on to the next without ever going back. Each of the stages a
 project plan. For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. 
 
 4. Scenarios and/or Use Cases (5%) - nav
+The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and 
+technologies. The target group for this project are electric vehicles that require information about its environment, for obstacle 
+clearance pathing, targeting, classification, and specifically cameras that can be mounted to any device or technologies utilizing 
+one or more features of this algorithm.
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
 
