@@ -72,7 +72,26 @@ Table 1-5B – Test Case Description
 Table 1-5C - Requirements Tractability Table
 
 6. Definition of Acceptance Tests (3%) - Soso
+Acceptance testing involves testing a system for  acceptability, The system must be in line with the requirements. 
+All requirements proposed for the project/system must be met. If requirements are not met, project might be considered faulty.
+The initial requirements for the obstacle detection and classification algorithm  for 8x8 electronic combat vehicle would be 
+-Develop a working image processing algorithm 
+-Algorithm developed must be able to be applied to our physical 8x8 vehicle 
+-Algorithm developed must be compatible with ROS(Robot operating system)
+-Testings must be conducted and validated in both simulated and physical environments
+-A complete package of obstacle/object detection and classification should be delivered at due date 
+-The algorithm should be efficient and must exhibit high repeatability
+
 
 7. Project Plan (3%)- Soso
+Our project plan is designed to guide and control the execution of the project, this involves
+ -Research and familiarization with ROS and Linux development environment 
+-Research and familiarization with obstacle detection
+-Writing c++/python code for obstacle detection
+-Test c++/python code which was written 
+- Make sure algorithm is compatible with ROS
+-finally , a fully designed and developed image processing algorithm which can detect  and classify objects for the 8x8 electronic 
+combat vehicle .
+
 
 8. Contribution matrix 
