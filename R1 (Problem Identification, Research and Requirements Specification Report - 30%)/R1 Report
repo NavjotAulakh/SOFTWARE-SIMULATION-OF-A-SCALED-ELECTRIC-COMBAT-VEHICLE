@@ -103,3 +103,10 @@ combat vehicle .
 
 
 8. Contribution matrix 
+
+| Person\Section	| Section 1 | Section 2	| Section 3 | Section 4 | Section 5 | Section 6 | Section 7 |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Nicolas Zarfino | X | X |   |   |   |   |   |
+| Navjot Aulakh |   |   | X | X |   |   |   |
+| Jeffrey Zhang |   |   |   |   | X |   |   |
+| Musadiq Soso |   |   |   |   |   | X | X |
