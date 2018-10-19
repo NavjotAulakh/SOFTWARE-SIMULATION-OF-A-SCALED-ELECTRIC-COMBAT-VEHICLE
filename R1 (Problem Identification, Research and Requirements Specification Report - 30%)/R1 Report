@@ -1,8 +1,8 @@
 1 Introduction
 
-This report is an outline for creating an obstacle detection algorithm for a specially designed electric combat vehicle. 
+This report is an outline for creating an obstacle detection algorithm for a specially designed electric combat vehicle.
 The vehicle in question is an 8x8 remote-controlled vehicle equipped with various sensors such as an
-odometer and camera. To assist with driving and potential autonomous activity, a sophisticated obstacle detection, 
+odometer and camera. To assist with driving and potential autonomous activity, a sophisticated obstacle detection,
 and identification algorithm will be developed according to the needs of the invested parties and the vehicle itself.
 
 2 Product Vision and Scope
@@ -70,8 +70,23 @@ The project and the corresponding design of the image processing algorithm can b
 target group for this project is electric vehicles with mounted cameras in need of features related to obstacle detection. These features may
 include gathering information about its environment, obstacle clearance pathing, obstacle targeting, and obstacle classification.
 
-Use Case 1.1
+Use Case 1
+Use Case Name: Image Processing Algorithm
+Actors: Electric Combat Vehicle, ROS, Environment
+Overview: The image processing algorithm is initiated when the electric combat vehicle captures an image of the environment onto ROS utilizing a camera
+Preconditions: Environment’s Image Captured by Camera, ROS Operational
+Post condition: Obstacle Detected, Identified, and Classified
+Use case Description: Image Processing Algorithm utilizes the Vehicle’s camera, ROS and the pre-set logic for patterns to generate environment maps,
+detect, identify and classify obstacles/object for accurate obstacle avoidance routing instructions.
+Use Case Associations: Obstacle Detection, Obstacle Identification, Obstacle Classification/ Categorization
+Basic Flow: Environment’s Image Captured  Image Segmentation  Obstacle Detection  Obstacle Identification  Obstacle Classification  Obstacle
+Avoidance initiated
+Alternate Flow; Image Duplication
+Exception Flow: Image can’t be captured, corruption, and/or ROS crashed
+Traceability: RQ1 – RQ8
 
+
+Use Case 1.1
 Use Case Name: Ground Level - Obstacle Detection
 Actors: Electrical Combat Vehicle’s Camera, ROS, Environment
 Overview: The ground level obstacle detection takes place by the utilization of the image processing algorithm on the ROS by taking sensory
@@ -82,8 +97,8 @@ Use case Description: Vehicle’s Camera takes in visual representation of the e
 location of the objects in the surrounding environment that block or deviate the selected/routed path for the vehicle.
 Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
 Basic Flow: Environment’s Image taken  Image segmented  Image processed by algorithm in ROS (C++)  Obstacle/Object Detected that blocks
-or deviates the current route of the vehicle  Generates and stores an updated map of the surrounding environment (with or without an obstacle located)
- Object identification initiated
+or deviates the current route of the vehicle  Generates and stores an updated map of the surrounding environment
+ (with or without an obstacle located)  Object identification initiated
 Alternate Flow; Obstacle beyond current route
 Exception Flow: Image corruption when segmented or camera covered
 Traceability: RQ1, RQ5, RQ8
@@ -93,10 +108,13 @@ Use Case Name: Obstacle Identification
 Actors: Pre-stored Image and Environment Information, ROS
 Overview: The obstacle identification is initiated when an obstacle is detected by the image processing algorithm on ROS.
 Preconditions: Obstacle Detected, On-board Map Initiated, ROS Operational
-Post condition: Obstacle Identified by Name, Size (Visible Dimensions), Location (X, Y, Z), and Distance stored on-board the Electric Combat Vehicle. Obstacle Classification initiated if not in categories.
-Use case Description: Obstacle Identification utilized the obstacle detection to locate an obstacle then utilizes the existing information to calculate dimensions, location, size, and structure for naming and storing on ROS.
+Post condition: Obstacle Identified by Name, Size (Visible Dimensions), Location (X, Y, Z), and Distance stored on-board the Electric
+Combat Vehicle. Obstacle Classification initiated if not in categories.
+Use case Description: Obstacle Identification utilized the obstacle detection to locate an obstacle then utilizes the existing information
+to calculate dimensions, location, size, and structure for naming and storing on ROS.
 Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
-Basic Flow: Obstacle Detected  Image processed information analyzed  Obstacle generated with new information  Obstacle repository updated  Obstacle Categorization / Classification initiated
+Basic Flow: Obstacle Detected  Image processed information analyzed  Obstacle generated with new information  Obstacle repository updated
+ Obstacle Categorization / Classification initiated
 Alternate Flow; Obstacle pre-identified
 Exception Flow: Obstacle can’t be identified or out of bounds
 Traceability: RQ2, RQ3, RQ5, RQ8
@@ -107,13 +125,48 @@ Actors: Obstacle Identification, ROS
 Overview: The obstacle categorization is initiated when an obstacle is identified and stored by the image processing algorithm on ROS.
 Preconditions: Obstacle Identified, ROS Operational
 Post condition: Obstacle classified identified object into categories such as Passable, Impassable, or Distant.
-Use case Description: Obstacle Categorization / Classification utilizes obstacle identification to distinguish between an passable, impassable, or distant obstacle to update the current state of vehicle to avoid by rerouting existing path.
+Use case Description: Obstacle Categorization / Classification utilizes obstacle identification to distinguish between a passable,
+impassable, or distant obstacle to update the current state of vehicle to avoid by rerouting existing path.
 Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
-Basic Flow: Obstacle Identified  Object information analyzed  Obstacle classification generated and categorized  Obstacle Classification repository updated  Obstacle Avoidance initiated
+Basic Flow: Obstacle Identified  Object information analyzed  Obstacle classification generated and categorized  Obstacle Classification
+repository updated  Obstacle Avoidance initiated
 Alternate Flow; Obstacle pre-categorized
 Exception Flow: Obstacle can’t be categorized or out of bounds
 Traceability: RQ2, RQ5, RQ8
 
+Use Case 2
+Use Case Name: Obstacle Avoidance
+Actors: Image Processing Algorithm, ROS
+Overview: The obstacle avoidance is initiated when an obstacle is categorized as impassable, thus an approximate response or guidance
+is required by the combat vehicle
+Preconditions: Impassable Obstacle Identified, Electric Vehicle & ROS Operational
+Post condition: Vehicle routing updated to avoid obstacle
+Use case Description: Obstacle Avoidance utilizes the image processing algorithm to detect impassable obstacles that are in conflict
+with the current navigation path of the combat vehicle, thus routing path is recalculated to avoid the obstacle
+Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
+Basic Flow: Obstacle Impassable  Current Route recalculated to avoid the location + size of the identified obstacle  Vehicle recommendations
+and updated routing path transferred to corresponding modules
+Alternate Flow; Obstacle becomes Passable or Distant while in progress
+Exception Flow: No routing path available to avoid obstacle
+Traceability: RQ4, RQ6
+
+Use Case 3
+Use Case Name: Simulated Environment
+Actors: ROS, Image Processing Algorithm
+Overview: The Simulated Environment is concerned with testing the image processing algorithm without the need of real world equipment by
+building existing modules on ROS and Gazebo for simulate 8x8 electric combat vehicle and the environment.
+Preconditions: ROS & Image processing algorithm Operational
+Post condition: Image processing algorithm meets acceptance tests or not
+Use case Description: Simulated Environment utilizes ROS, Gazebo and the image processing algorithm to setup an emulation of the combat
+vehicle, and the environment with pre-arranged obstacles to test the 3 sub modules of the algorithm and the obstacle avoidance module.
+Use Case Associations: Image processing algorithm. Obstacle, Detection, Obstacle Identification, Obstacle Classification/ Categorization,
+ Obstacle Avoidance
+Basic Flow: Electric Vehicle & Environment Simulated  Pre-arranged Obstacles  Obstacle Detected  Obstacle Identified  Object information
+analyzed  Obstacle classification generated and categorized  Obstacle Classification repository updated  Obstacle Avoidance initiated
+ Simulated Environment Feedback  Acceptance Tests
+Alternate Flow; Image Processing Algorithm found no obstacles in its path or could not reroute to avoid an impassable obstacle
+Exception Flow: Image Processing Algorithm not initiated or initialized, ROS Crashed
+Traceability: RQ2, RQ5, RQ8
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
 
