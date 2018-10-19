@@ -1,36 +1,39 @@
 1 Introduction
 
-The designated electric combat vehicle it includes the standards from a casual vehicle which is an manual driving system with no interaction from a machine to overdrive or assist the main functionalities from the driver/pilot. 
+The designated electric combat vehicle it includes the standards from a casual vehicle which is an manual driving system with no interaction from a machine to overdrive or assist the main functionalities from the driver/pilot.
 Also a lotof pilots of these kind of vehicles, may not be able to assume the differences of obstacles nearby or in range of the vehicle on ground.
 
-2 Product Vision and Scope 
+2 Product Vision and Scope
 
 Project vision statement is to create a new recognition system where the vehicle will detect and differentiate between obstacles.
- The main scope of the project is to design and implement an algorithm that will classify and detect obstacles and aggregate these features in the actual prototype which has already the normal manual driving system. 
+ The main scope of the project is to design and implement an algorithm that will classify and detect obstacles and aggregate these features in the actual prototype which has already the normal manual driving system.
 The requirements for the algorithm to be applied are:
-- Have a quick reaction in a minimum timeframe possible. 
+- Have a quick reaction in a minimum timeframe possible.
 - Have created simulated environment with the ROS (Robot Operation System), test it and validate the algorithm, and then test it physically with the prototype on the real world.
 
-For the background and research required to the implementation and build of the environment it’s important to take count with the set of packages available of ROS, such as GAZEBO which will have the all the interfaces 
-require for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment. For the development of the environment and the simulation of the algorithm 
+For the background and research required to the implementation and build of the environment it’s important to take count with the set of packages available of ROS, such as GAZEBO which will have the all the interfaces
+require for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment. For the development of the environment and the simulation of the algorithm
 all the group members would require to learn and to get involved with multiple navigation and manipulation packages suck as simulation.
 
 
 3. Design Process (3%) - nav
-The project requires a robust solution for the image processing algorithm, which must accompanied by a thorough testing phase and 
-implemented according to the requirement specifications. This aspect of the project requires the design process to follow a strict 
-one way model, and the most robust process model that is built up from provided requirement specifications is the Waterfall Model. 
-This model is considered the oldest of the structured SDLC methodologies, but has a very simple approach where you first finish one 
-phase and then most on to the next without ever going back. Each of the stages are built upon the previous stages and has its own 
-project plan. For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. Following which, the 
-implemenation of certain features is executed, followed by testing of each of these features individually and integrated combination of
-multiple modules. Once the algorithm is thorougly tested and integated, the next phase to be carried out would be deployment onto a simulated
-environment in this term to acceptance testing.
+This capstone project requires a robust solution for the image processing algorithm that will be responsible for object detection and classification,
+which must be accompanied by a thorough testing phase in a simulated environment (using ROS) and implemented according to all of the requirement
+specifications. This aspect of the project requires the design process to be initiated only after the requirements are coherently defined and analyzed
+before any of the design or development phases, thus the most relative and efficient design model that addresses these concerns while allowing the
+flexibility of revisiting the preceding stage is the Royce’s modified Waterfall Model with the feedback loop.
+The unmodified Waterfall model is considered the oldest of the structured SDLC methodologies where the software is development in stages such as
+Requirements  System Design  Implementation  Integration and Testing  Deployment of System  Maintenance. These six stages are developed in
+a linear sequential flow, hence the model is also referred to as Linear-Sequential Life Cycle Model, but the concern with this model is the
+unrecognition of unforeseen design problems after a concerned stage has reached completion. The modified Waterfall model with Royce’s iterative
+feedback allows for the stages to overlap in addition to the preceding stage to be revisited as shown by Figure 3.1 below. The iterative
+feedback also allows for the testing stage to iterate to the design stage bypassing the intermediate stages.
+
 
 4. Scenarios and/or Use Cases (5%) - nav
-The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and 
-technologies. The target group for this project are electric vehicles that require information about its environment, for obstacle 
-clearance pathing, targeting, classification, and specifically cameras that can be mounted to any device or technologies utilizing 
+The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and
+technologies. The target group for this project are electric vehicles that require information about its environment, for obstacle
+clearance pathing, targeting, classification, and specifically cameras that can be mounted to any device or technologies utilizing
 one or more features of this algorithm.
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
@@ -80,29 +83,29 @@ Table 1-5B – Test Case Description
 Table 1-5C - Requirements Tractability Table
 
 6. Definition of Acceptance Tests (3%) - Soso
-Acceptance testing involves testing a system for  acceptability, The system must be in line with the requirements. 
+Acceptance testing involves testing a system for  acceptability, The system must be in line with the requirements.
 All requirements proposed for the project/system must be met. If requirements are not met, project might be considered faulty.
-The initial requirements for the obstacle detection and classification algorithm  for 8x8 electronic combat vehicle would be 
--Develop a working image processing algorithm 
--Algorithm developed must be able to be applied to our physical 8x8 vehicle 
+The initial requirements for the obstacle detection and classification algorithm  for 8x8 electronic combat vehicle would be
+-Develop a working image processing algorithm
+-Algorithm developed must be able to be applied to our physical 8x8 vehicle
 -Algorithm developed must be compatible with ROS(Robot operating system)
 -Testings must be conducted and validated in both simulated and physical environments
--A complete package of obstacle/object detection and classification should be delivered at due date 
+-A complete package of obstacle/object detection and classification should be delivered at due date
 -The algorithm should be efficient and must exhibit high repeatability
 
 
 7. Project Plan (3%)- Soso
 Our project plan is designed to guide and control the execution of the project, this involves
- -Research and familiarization with ROS and Linux development environment 
+ -Research and familiarization with ROS and Linux development environment
 -Research and familiarization with obstacle detection
 -Writing c++/python code for obstacle detection
--Test c++/python code which was written 
+-Test c++/python code which was written
 - Make sure algorithm is compatible with ROS
--finally , a fully designed and developed image processing algorithm which can detect  and classify objects for the 8x8 electronic 
+-finally , a fully designed and developed image processing algorithm which can detect  and classify objects for the 8x8 electronic
 combat vehicle .
 
 
-8. Contribution matrix 
+8. Contribution matrix
 
 | Person\Section	| Section 1 | Section 2	| Section 3 | Section 4 | Section 5 | Section 6 | Section 7 | Section 8 |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
