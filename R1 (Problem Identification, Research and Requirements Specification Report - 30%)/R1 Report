@@ -35,6 +35,34 @@ Constraints: The designed algorithm will conform to the following restrictions:
 
 3. Design Process (3%) - nav
 
+This capstone project requires a robust solution for the image processing algorithm that will be responsible for object detection and classification,
+which must be accompanied by a thorough testing phase in a simulated environment (using ROS) and implemented according to all of the requirement
+specifications. This aspect of the project requires the design process to be initiated only after the requirements are coherently defined and analyzed
+before any of the design or development phases, thus the most relative and efficient design model that addresses these concerns while allowing the
+flexibility of revisiting the preceding stage is the Royce’s modified Waterfall Model with the feedback loop.
+
+The unmodified Waterfall model is considered the oldest of the structured SDLC methodologies where the software is development in stages such as
+Requirements  System Design  Implementation  Integration and Testing  Deployment of System  Maintenance. These six stages are developed in
+a linear sequential flow, hence the model is also referred to as Linear-Sequential Life Cycle Model, but the concern with this model is the
+unrecognition of unforeseen design problems after a concerned stage has reached completion. The modified Waterfall model with Royce’s iterative
+feedback allows for the stages to overlap in addition to the preceding stage to be revisited as shown by Figure 3.1 below. The iterative
+feedback also allows for the testing stage to iterate to the design stage bypassing the intermediate stages.
+
+The image processing algorithm’s design process will begin with the evaluation of the problem address in the Capstone project description,
+background research and analysis will begin by the team members. A complete set of requirements and specifications will be defined in accordance
+with the shareholders, these requirements will be analyzed and the system architecture, hardware, and software will be specified accordingly for
+the design phase where architecture and detailed design will commence and test cases will be generated. Next, the development phase will begin in
+Linux 16.04 (ROS Kinetic) utilizing Gazebo to accommodate available and required packages for designing the image processing algorithm intended for
+object detection and classification. Once development has finished, it will be verified and validation in the Validation phase by utilizing
+acceptance tests for all of the listed scenarios and use cases. Finally, the algorithm will be deployed onto the simulated environment for thorough
+validation as the Iterative feedback model’s quality assurance splits each stage in two parts, one for work toward the stages purpose and the other
+for validation and verification.
+
+For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. Following which, the implementation of
+certain features is executed, followed by testing of each of these feature individually and integrated combination of multiple modules. Once the
+algorithm is thoroughly tested and integrated, the next phase to be carried out would be deployment onto a simulated environment in this term and
+then working towards completing acceptance testing in real world next term.
+
 4. Scenarios and/or Use Cases (5%) - nav
 The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and technologies. The
 target group for this project are electric vehicles that require information about its environment, for obstacle clearance pathing, targeting,
