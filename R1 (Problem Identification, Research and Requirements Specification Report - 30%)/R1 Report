@@ -98,26 +98,87 @@ Table 1-5B – Test Case Description
 Table 1-5C - Requirements Tractability Table
 
 6. Definition of Acceptance Tests (3%) - Soso
-Acceptance testing involves testing a system for  acceptability, The system must be in line with the requirements.
-All requirements proposed for the project/system must be met. If requirements are not met, project might be considered faulty.
-The initial requirements for the obstacle detection and classification algorithm  for 8x8 electronic combat vehicle would be
--Develop a working image processing algorithm
--Algorithm developed must be able to be applied to our physical 8x8 vehicle
--Algorithm developed must be compatible with ROS(Robot operating system)
--Testings must be conducted and validated in both simulated and physical environments
--A complete package of obstacle/object detection and classification should be delivered at due date
--The algorithm should be efficient and must exhibit high repeatability
+ 
+Acceptance testing involves testing a system for acceptability, The system must be in line with the requirements. All requirements proposed for the project/system must be met. 
+If requirements are not met, project might be considered faulty. The initial requirements for the obstacle detection and classification algorithm for 8x8 electronic combat vehicle would be 
+Develop a working image processing algorithm 
+
+•	The group members would have to work together and come up with an image processing algorithm 
+Algorithm developed must be able to be applied to our physical 8x8 vehicle 
+
+•	The Algorithm developed by the team should be able to be applied to the physical 8x8 combat vehicle 
+Algorithm developed must be compatible with ROS (Robot operating system)
+•	Group members will have to ensure the algorithm developed must be compatible with ROS(Robot operating system)
+
+Testing’s must be conducted and validated in both simulated and physical environments
+•	All code written must be tested and validated in both the physical and simulated environments 
+
+A complete package of obstacle/object detection and classification should be delivered at due date 
+•	The team members will also have to ensure all requirements and a complete package is met at the due date 
+
+The algorithm should be efficient and must exhibit high repeatability
+•	The algorithm developed by group members should be efficient and must exhibit high repeatability 
+
+
 
 
 7. Project Plan (3%)- Soso
-Our project plan is designed to guide and control the execution of the project, this involves
- -Research and familiarization with ROS and Linux development environment
--Research and familiarization with obstacle detection
--Writing c++/python code for obstacle detection
--Test c++/python code which was written
-- Make sure algorithm is compatible with ROS
--finally , a fully designed and developed image processing algorithm which can detect  and classify objects for the 8x8 electronic
-combat vehicle .
+  Our project Plan is designed to guide and control the execution of the project, the project plan is the key to a successful project and is the most important document that needs to be created when starting any project. 
+  Project initiation requires detailed and vital documentation to track project requirements, project timeline, functionalities and scheduling.
+
+The  project plan would help us achieve the following 
+•	To document and communicate stake holder products and project expectations 
+•	To Control the team’s schedule and delivery 
+•	To calculate and manage associated risks 
+
+Project Effort Estimate
+The project effort estimate was calculated using COCOMO effort formula, The obstacle detection project at hand would be seen as an Organic project. The basic COCOMO effort applied formula is as follows below:
+Effort Applied (E) = a1(KLOC)^a2*PM
+Where a1 and a2 are constants For Organic projects
+KLOC = line of code (thousand) 
+PM = the total man-months 
+
+Calculation
+Effort = a1 *(KLOC)^a2*PM
+   a1 = 2.4, a2 = 1.05, KLOC = 4, PM = total months = 3.
+= 2.4(4)^1.05*3 = 30.86
+Effort = 30.86 man months 
+
+
+Critical Path Method and graph is shown below
+
+Activity	Predecessor	Duration(weeks)
+A	            -	           1
+B	            A	           1
+C	            A	           4
+D	            B	           3
+E	            C	           2
+F	           D,E	          1
+
+Activity Parameters
+A - Research and Familiarize with ROS 
+B – Research and familiarization with obstacle detection 
+C – Write C++/Python code for Obstacle Detection 
+D – Test Code that was written 
+E – Confirm Algorithm is compatible with ROS
+F – Presentation 
+   
+
+          1	B	2   2 D 5
+          3	1	4   4 3 7
+
+0	A	1                      7 F 8
+0	1	1                      7 1 8
+
+        1 C 5      5	E	7
+        1 4 5      5	2	7
+
+         CRITICAL  PATH
+
+
+
+
+
 
 
 8. Contribution matrix
