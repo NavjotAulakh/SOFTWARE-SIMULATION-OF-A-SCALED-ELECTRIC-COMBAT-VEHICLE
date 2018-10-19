@@ -34,6 +34,7 @@ Constraints: The designed algorithm will conform to the following restrictions:
 -The simulation must be working before being applied in the actual prototype of the vehicle.
 
 3. Design Process (3%) - nav
+
 This capstone project requires a robust solution for the image processing algorithm that will be responsible for object detection and classification,
 which must be accompanied by a thorough testing phase in a simulated environment (using ROS) and implemented according to all of the requirement
 specifications. This aspect of the project requires the design process to be initiated only after the requirements are coherently defined and analyzed
