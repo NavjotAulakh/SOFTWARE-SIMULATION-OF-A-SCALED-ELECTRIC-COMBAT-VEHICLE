@@ -64,28 +64,7 @@ algorithm is thoroughly tested and integrated, the next phase to be carried out 
 then working towards completing acceptance testing in real world next term.
 
 4. Scenarios and/or Use Cases (5%) - nav
-The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and technologies. The
-target group for this project are electric vehicles that require information about its environment, for obstacle clearance pathing, targeting,
-classification, and specifically cameras that can be mounted to any device or technologies utilizing one or more features of this algorithm to
-aid in the functionality of the prime device.
 
-Use Case 1.1
-
-Use Case Name: Ground Level - Obstacle Detection
-Actors: Electrical Combat Vehicle’s Camera, ROS, Environment
-Overview: The ground level obstacle detection takes place by the utilization of the image processing algorithm on the ROS by taking sensory
-information of the Combat Vehicle Camera about the Environment to detect near-by objects.
-Preconditions: Combat Vehicle’s Camera Initiated with ROS Operational, Ground Level Environment View Analysis Positive
-Post condition: ROS nodes for mapping environment generated, Camera reinitialized, Obstacle Identification initiated
-Use case Description: Vehicle’s Camera takes in visual representation of the environment and ROS processes the information to pinpoint the
-location of the objects in the surrounding environment that block or deviate the selected/routed path for the vehicle.
-Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
-Basic Flow: Environment’s Image taken  Image segmented  Image processed by algorithm in ROS (C++)  Obstacle/Object Detected that blocks
-or deviates the current route of the vehicle  Generates and stores an updated map of the surrounding environment (with or without an obstacle located)
- Object identification initiated
-Alternate Flow; Obstacle beyond current route
-Exception Flow: Image corruption when segmented or camera covered
-Traceability: RQ1, RQ5, RQ8
 
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
