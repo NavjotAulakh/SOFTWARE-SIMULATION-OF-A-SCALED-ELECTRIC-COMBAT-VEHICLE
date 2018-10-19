@@ -38,7 +38,12 @@ Linux 16.04 (ROS Kinetic) utilizing Gazebo to accommodate available and required
 object detection and classification. Once development has finished, it will be verified and validation in the Validation phase by utilizing
 acceptance tests for all of the listed scenarios and use cases. Finally, the algorithm will be deployed onto the simulated environment for thorough
 validation as the Iterative feedback model’s quality assurance splits each stage in two parts, one for work toward the stages purpose and the other
-for validation and verification.  
+for validation and verification.
+
+For this algorithm, it’s crucial that the requirements are first thoroughly researched, and documented. Following which, the implementation of
+certain features is executed, followed by testing of each of these feature individually and integrated combination of multiple modules. Once the
+algorithm is thoroughly tested and integrated, the next phase to be carried out would be deployment onto a simulated environment in this term and
+then working towards completing acceptance testing in real world next term.
 
 4. Scenarios and/or Use Cases (5%) - nav
 The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and
