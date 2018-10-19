@@ -1,7 +1,9 @@
 1 Introduction
 
-The designated electric combat vehicle it includes the standards from a casual vehicle which is an manual driving system with no interaction from a machine to overdrive or assist the main functionalities from the driver/pilot.
-Also a lotof pilots of these kind of vehicles, may not be able to assume the differences of obstacles nearby or in range of the vehicle on ground.
+This report is an outline for creating an obstacle detection algorithm for a specially designed electric combat vehicle. 
+The vehicle in question is an 8x8 remote-controlled vehicle equipped with various sensors such as an
+odometer and camera. To assist with driving and potential autonomous activity, a sophisticated obstacle detection, 
+and identification algorithm will be developed according to the needs of the invested parties and the vehicle itself.
 
 2 Product Vision and Scope
 
