@@ -15,6 +15,23 @@ For the background and research required to the implementation and build of the 
 require for the simulation of the environment and then so apply the obstacle algorithms to the navigation system in the respective environment. For the development of the environment and the simulation of the algorithm
 all the group members would require to learn and to get involved with multiple navigation and manipulation packages suck as simulation.
 
+Stakeholders
+
+Management—the managing team that install and are in charge of the electric combat vehicles existing in the military in different countries.
+Developers—All the team members that are involved in the project, which are the software engineers and the mechanical engineers that were assigned.  After the development of this obstacle algorithm will be applied with
+the designed electric combat vehicle by the mechanical team.
+Maintenance—A set of team that which will be designated to help the installation and maintainability of the systems applied in the combat vehicles costumers and managers of the vehicle.
+Purchasers—Military based vehicles production companies that operates ground electric vehicles in their line of work.
+Users— designated drivers in the military positon that will operate tanks or the different electric combat vehicles that will be applied the software.
+
+Assumptions and constraints
+
+Assumptions: the developers may take the following for the functionality of the design:
+-The Algorithm will be applied in the electric combat vehicle designed by the mechanical team.
+Constraints: The designed algorithm will conform to the following restrictions:
+-The system will be applied only focus in the electric based vehicles with special cameras for obstacles recognition.
+-The Algorithm must be compatible to the ROS system for the simulation to work.
+-The simulation must be working before being applied in the actual prototype of the vehicle.
 
 3. Design Process (3%) - nav
 This capstone project requires a robust solution for the image processing algorithm that will be responsible for object detection and classification,
