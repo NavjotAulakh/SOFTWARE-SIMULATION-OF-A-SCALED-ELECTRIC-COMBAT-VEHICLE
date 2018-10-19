@@ -35,16 +35,15 @@ Constraints: The designed algorithm will conform to the following restrictions:
 
 3. Design Process (3%) - nav
 
-This capstone project requires a robust solution for the image processing algorithm that will be responsible for object detection and classification,
-which must be accompanied by a thorough testing phase in a simulated environment (using ROS) and implemented according to all of the requirement
-specifications. This aspect of the project requires the design process to be initiated only after the requirements are coherently defined and analyzed
-before any of the design or development phases, thus the most relative and efficient design model that addresses these concerns while allowing the
-flexibility of revisiting the preceding stage is the Royce’s modified Waterfall Model with the feedback loop.
+This capstone project requires a robust image processing algorithm focused on object detection and classification. The project must have a thorough
+testing phase in a simulated environment (using ROS) and implement all of the requirements. This project requires the design process to be initiated
+after requirements have been coherently defined and analyzed. The most efficient design model that addresses these concerns while allowing some
+flexibility is Royce's modified Waterfall Model with feedback loops.
 
-The unmodified Waterfall model is considered the oldest of the structured SDLC methodologies where the software is development in stages such as
+The unmodified Waterfall model is considered the oldest of the structured SDLC methodologies, where software is development in stages such as
 Requirements  System Design  Implementation  Integration and Testing  Deployment of System  Maintenance. These six stages are developed in
 a linear sequential flow, hence the model is also referred to as Linear-Sequential Life Cycle Model, but the concern with this model is the
-unrecognition of unforeseen design problems after a concerned stage has reached completion. The modified Waterfall model with Royce’s iterative
+discovery of unforeseen design problems after a concerned stage has reached completion. The modified Waterfall model with Royce’s iterative
 feedback allows for the stages to overlap in addition to the preceding stage to be revisited as shown by Figure 3.1 below. The iterative
 feedback also allows for the testing stage to iterate to the design stage bypassing the intermediate stages.
 
@@ -66,9 +65,8 @@ then working towards completing acceptance testing in real world next term.
 4. Scenarios and/or Use Cases (5%) - nav
 
 The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and technologies. The
-target group for this project are electric vehicles that require information about its environment, for obstacle clearance pathing, targeting,
-classification, and specifically cameras that can be mounted to any device or technologies utilizing one or more features of this algorithm to
-aid in the functionality of the prime device.
+target group for this project is electric vehicles with mounted cameras in need of features related to obstacle detection. These features may
+include gathering information about its environment, obstacle clearance pathing, obstacle targeting, and obstacle classification.
 
 Use Case 1.1
 
