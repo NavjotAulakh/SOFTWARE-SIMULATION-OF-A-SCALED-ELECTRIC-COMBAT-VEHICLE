@@ -101,12 +101,13 @@ Table 1-5C - Requirements Tractability Table
  
 Acceptance testing involves testing a system for acceptability, The system must be in line with the requirements. All requirements proposed for the project/system must be met. 
 If requirements are not met, project might be considered faulty. The initial requirements for the obstacle detection and classification algorithm for 8x8 electronic combat vehicle would be 
+
 Develop a working image processing algorithm 
-
 •	The group members would have to work together and come up with an image processing algorithm 
-Algorithm developed must be able to be applied to our physical 8x8 vehicle 
 
-•	The Algorithm developed by the team should be able to be applied to the physical 8x8 combat vehicle 
+Algorithm developed must be able to be applied to our physical 8x8 vehicle 
+• The Algorithm developed by the team should be able to be applied to the physical 8x8 combat vehicle 
+
 Algorithm developed must be compatible with ROS (Robot operating system)
 •	Group members will have to ensure the algorithm developed must be compatible with ROS(Robot operating system)
 
