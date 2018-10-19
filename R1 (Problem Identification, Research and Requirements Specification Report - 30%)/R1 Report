@@ -64,6 +64,7 @@ algorithm is thoroughly tested and integrated, the next phase to be carried out 
 then working towards completing acceptance testing in real world next term.
 
 4. Scenarios and/or Use Cases (5%) - nav
+
 The project and the corresponding design of the image processing algorithm can be applied in wide variety of applications and technologies. The
 target group for this project are electric vehicles that require information about its environment, for obstacle clearance pathing, targeting,
 classification, and specifically cameras that can be mounted to any device or technologies utilizing one or more features of this algorithm to
@@ -86,6 +87,32 @@ or deviates the current route of the vehicle  Generates and stores an updated
 Alternate Flow; Obstacle beyond current route
 Exception Flow: Image corruption when segmented or camera covered
 Traceability: RQ1, RQ5, RQ8
+
+Use Case 1.2
+Use Case Name: Obstacle Identification
+Actors: Pre-stored Image and Environment Information, ROS
+Overview: The obstacle identification is initiated when an obstacle is detected by the image processing algorithm on ROS.
+Preconditions: Obstacle Detected, On-board Map Initiated, ROS Operational
+Post condition: Obstacle Identified by Name, Size (Visible Dimensions), Location (X, Y, Z), and Distance stored on-board the Electric Combat Vehicle. Obstacle Classification initiated if not in categories.
+Use case Description: Obstacle Identification utilized the obstacle detection to locate an obstacle then utilizes the existing information to calculate dimensions, location, size, and structure for naming and storing on ROS.
+Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
+Basic Flow: Obstacle Detected  Image processed information analyzed  Obstacle generated with new information  Obstacle repository updated  Obstacle Categorization / Classification initiated
+Alternate Flow; Obstacle pre-identified
+Exception Flow: Obstacle can’t be identified or out of bounds
+Traceability: RQ2, RQ3, RQ5, RQ8
+
+Use Case 1.3
+Use Case Name: Obstacle Categorization / Classification
+Actors: Obstacle Identification, ROS
+Overview: The obstacle categorization is initiated when an obstacle is identified and stored by the image processing algorithm on ROS.
+Preconditions: Obstacle Identified, ROS Operational
+Post condition: Obstacle classified identified object into categories such as Passable, Impassable, or Distant.
+Use case Description: Obstacle Categorization / Classification utilizes obstacle identification to distinguish between an passable, impassable, or distant obstacle to update the current state of vehicle to avoid by rerouting existing path.
+Use Case Associations: Obstacle Identification, Obstacle Classification/ Categorization
+Basic Flow: Obstacle Identified  Object information analyzed  Obstacle classification generated and categorized  Obstacle Classification repository updated  Obstacle Avoidance initiated
+Alternate Flow; Obstacle pre-categorized
+Exception Flow: Obstacle can’t be categorized or out of bounds
+Traceability: RQ2, RQ5, RQ8
 
 
 5. Stakeholder Requirements and Traceability Matrix (10%) - Jeffrey
