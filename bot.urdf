@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<robot name="8x8">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+ <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.8 0.2"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.2"/>
+      <material name = "blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.8 0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value = "10" />
+      <inertia ixx="0.5667" ixy="0.0" ixz="0.0" iyy="0.5667" iyz="0.0" izz="0.0667"/>
+    </inertial>
+  </link>
+
+  <link name="left_wheel_1">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+      <origin rpy="0 1.5 0" xyz="-0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="LW1_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_1"/>
+    <origin xyz="-0.1 0.3 0.12"/>
+  </joint>
+
+<link name="left_wheel_2">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+      <origin rpy="0 1.5 0" xyz="-0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="LW2_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_2"/>
+    <origin xyz="-0.1 0.1 0.12"/>
+  </joint>
+
+
+<link name="left_wheel_3">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+      <origin rpy="0 1.5 0" xyz="-0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="LW3_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_3"/>
+    <origin xyz="-0.1 -0.1 0.12"/>
+  </joint>
+
+<link name="left_wheel_4">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+      <origin rpy="0 1.5 0" xyz="-0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="LW4_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_wheel_4"/>
+    <origin xyz="-0.1 -0.3 0.12"/>
+  </joint>
+
+// Right side
+<link name="right_wheel_1">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+      <origin rpy="0 1.5 0" xyz="0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="RW1_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_1"/>
+    <origin xyz="0.1 0.3 0.12"/>
+  </joint>
+
+<link name="right_wheel_2">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+       <origin rpy="0 1.5 0" xyz="0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="RW2_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_2"/>
+    <origin xyz="0.1 0.1 0.12"/>
+  </joint>
+
+
+<link name="right_wheel_3">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+       <origin rpy="0 1.5 0" xyz="0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="RW3_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_3"/>
+    <origin xyz="0.1 -0.1 0.12"/>
+  </joint>
+
+<link name="right_wheel_4">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+      <material name="Black"/>
+       <origin rpy="0 1.5 0" xyz="0.05 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="RW4_joint" type="revolute">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.5" upper="0.5" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_4"/>
+    <origin xyz="0.1 -0.3 0.12"/>
+  </joint>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
