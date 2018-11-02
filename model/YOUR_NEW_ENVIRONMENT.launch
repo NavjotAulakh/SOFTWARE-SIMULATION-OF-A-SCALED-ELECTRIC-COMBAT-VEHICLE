@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+        <!-- start gazebo world from .world file -->
+        <include file="$(find cob_gazebo_worlds)/ros/launch/world.launch" />
+</launch>
