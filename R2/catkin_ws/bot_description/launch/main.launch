@@ -1,0 +1,46 @@
+<launch>
+  <arg name="model" default="$(find bot_description)/bot.urdf.xacro"/>
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <include file="$(find bot_description)/launch/gazebo.launch">
+  <arg name="model" value="$(arg model)" />
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+  <rosparam file="$(find bot_description)/config/controllers.yaml" command="load" />
+
+  <node name="bot_controller_spawner" pkg="controller_manager" type="spawner"
+    respawn="false" output="screen" ns="/bot" args="joint_state_controller
+        left_wheel_0_joint
+        left_wheel_1_joint
+        left_wheel_2_joint
+        left_wheel_3_joint
+        right_wheel_0_joint
+        right_wheel_1_joint
+        right_wheel_2_joint
+        right_wheel_3_joint"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/bot/joint_states" />
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <!-- Starting Joint state publisher node which will publish the
+  joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+    type="joint_state_publisher" >
+    <remap from="/joint_states" to="/bot/joint_states" />  
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+  
+   <node pkg="bot_interface" type="bot_interface" name="bot_interface" output="screen">
+   </node>
+
+ <include file="$(find bot_2dnav)/move_base.launch">
+  </include>
+
+</launch>
+
