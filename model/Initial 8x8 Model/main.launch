@@ -1,0 +1,9 @@
+<launch>
+  <arg name="model" default="bot.urdf.xacro"/>
+
+  <include file="gazebo.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+</launch>
+
