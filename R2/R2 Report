@@ -1,6 +1,18 @@
 1. Concept Generation and Analysis (10%) Navjot
 
 2. Conceptual System Design (10%)
+. Conceptual System Design (10%) Jeff 
+For this project, we propose the utilization of various features provided by ROS. We will use Rviz and Gazebo to visual the the simulation, the navigation stack for path planning, and our custom script for the controllers. Finally, our customized robot has to send all of it’s relevant information from sensors to the navigation stack.
+
+Figure 2-A: Conceptual Diagram
+
+ROS uses a publisher/subscriber messaging system in order to operate nodes. In figure 2-A, each green box dictates a node, which can publish to and subscribe to many different topics. To interface with a node, messages can be passed to or received from each other. Table 2-A holds information regarding all message formats and frequencies. Each node has tasks and interfaces.
+
+The bot component of our conceptual model as seen in Figure 2-A will send laser scans over the /scan topic, will send camera images over the /image topic, information related to the speed and position of the vehicle over the /odom topic, and link transforms over the /tf topic. 
+
+The Rviz node will allow us to view the current status of the model, and offers a user interface for sending navigation goals. These goals are published to move_base_simple/goal. Finally, the navigation node will plan the movement of the robot, and send movement commands on the /cmd_vel topic. This will be received by the controller node, which actually moves the robot. Each node of this system was created or modified by us, with the only exception being Rviz.
+
+
 
 3. Definition of Integration Tests (3%) Navjot
 
