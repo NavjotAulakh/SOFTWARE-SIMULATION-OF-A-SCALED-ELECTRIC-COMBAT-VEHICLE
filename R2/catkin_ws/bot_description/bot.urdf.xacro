@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <robot name="bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:property name="wheelRadius" value="0.0532"/>
+<xacro:property name="wheelRadius" value="0.0732"/>
 <xacro:property name="wheelLength" value="0.05575"/>
 <xacro:property name="leftWheel" value="left_wheel"/>
 <xacro:property name="rightWheel" value="right_wheel"/>
 
-<xacro:macro name="wheel" params="side num reflect">
+<xacro:macro name="wheel" params="side num reflect xv yv zv">
   <link name="${side}_${num}">
     <visual>
-      <origin rpy="0 3.14592 0" xyz="0 0 0"/>	
+      <origin rpy="0 ${3.14592/2} 0" xyz="${xv} ${yv} ${zv}"/>
       <geometry>
 	<mesh filename="package://bot_description/meshes/wheel.dae" />
       </geometry>
       <material name="Grey"/>
     </visual>
     <collision>
-      <geometry>
-         <cylinder length="${wheelLength}" radius="${wheelRadius}"/>
-         <origin rpy="0 ${3.14592/2} 0" xyz="0 0 0"/>
+	<origin rpy="0 ${3.14592/2} 0" xyz="${xv} ${yv} ${zv}"/>
+        <geometry>
+         <mesh filename="package://bot_description/meshes/wheel.dae" />
       </geometry>
     </collision>
     <inertial>
@@ -29,11 +29,11 @@
 </link>
 
   <joint name="${side}_${num}_joint" type="continuous">
-    <axis xyz="0 0 1" />
+    <axis xyz="0.05 0 1" />
     <limit effort="10000.0" velocity="3"/>
     <parent link="base_link"/>
     <child link="${side}_${num}"/>
-    <origin rpy="0 ${3.14592/2} 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.12"/>
+    <origin rpy="0 ${3.14592/2} 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.10"/>
   </joint>
 
   <gazebo reference="${side}_${num}">
@@ -72,7 +72,7 @@
 	<joint name="hokuyo_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="hokuyo_link"/>
-		<origin xyz="0.0 -0.13 0.25" rpy="0 0 -1.572" />
+		<origin xyz="0.0 -0.3 0.20" rpy="0 0 -1.572" />
 	</joint>
 
 	<gazebo reference="hokuyo_link">
@@ -121,14 +121,14 @@
       <geometry>
         <mesh filename="package://bot_description/meshes/carfullblended.dae"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0.044112 -0.311197 -0.038199"/>
+      <origin rpy="0 0 0" xyz="-0.01 -0.05 -0.08"/>
       <material name="grey"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://bot_description/meshes/carfullblended.dae"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="-0.01 -0.05 -0.08"/>
     </collision>
     
   </link>
@@ -146,14 +146,14 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
   
-<xacro:wheel side="left_wheel" num="0" reflect="-1"/>
-<xacro:wheel side="left_wheel" num="1" reflect="-1"/>
-<xacro:wheel side="left_wheel" num="2" reflect="-1"/>
-<xacro:wheel side="left_wheel" num="3" reflect="-1"/>
-<xacro:wheel side="right_wheel" num="0" reflect="1"/>
-<xacro:wheel side="right_wheel" num="1" reflect="1"/>
-<xacro:wheel side="right_wheel" num="2" reflect="1"/>
-<xacro:wheel side="right_wheel" num="3" reflect="1"/>
+<xacro:wheel side="left_wheel" num="0" reflect="-1" xv="0" yv="0" zv="0.02"/>
+<xacro:wheel side="left_wheel" num="1" reflect="-1" xv="0" yv="0" zv="0.02"/>
+<xacro:wheel side="left_wheel" num="2" reflect="-1" xv="0" yv="0" zv="0.02"/>
+<xacro:wheel side="left_wheel" num="3" reflect="-1" xv="0" yv="0" zv="0.02"/>
+<xacro:wheel side="right_wheel" num="0" reflect="1" xv="0" yv="0" zv="-0.02"/>
+<xacro:wheel side="right_wheel" num="1" reflect="1" xv="0" yv="0" zv="-0.02"/>
+<xacro:wheel side="right_wheel" num="2" reflect="1" xv="0" yv="0" zv="-0.02"/>
+<xacro:wheel side="right_wheel" num="3" reflect="1" xv="0" yv="0" zv="-0.02"/>
 
   <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

@@ -6,39 +6,39 @@ bot:
   left_wheel_0_joint:
     type: velocity_controllers/JointVelocityController
     joint: left_wheel_0_joint
-    pid: {p: 100.0, i: 0.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   left_wheel_1_joint:
     type: velocity_controllers/JointVelocityController
     joint: left_wheel_1_joint
-    pid: {p: 100.0, i: 1.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   left_wheel_2_joint:
     type: velocity_controllers/JointVelocityController
     joint: left_wheel_2_joint
-    pid: {p: 100.0, i: 2.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   left_wheel_3_joint:
     type: velocity_controllers/JointVelocityController
     joint: left_wheel_3_joint
-    pid: {p: 100.0, i: 3.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   right_wheel_0_joint:
     type: velocity_controllers/JointVelocityController
     joint: right_wheel_0_joint
-    pid: {p: 110.0, i: 0.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   right_wheel_1_joint:
     type: velocity_controllers/JointVelocityController
     joint: right_wheel_1_joint
-    pid: {p: 110.0, i: 1.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   right_wheel_2_joint:
     type: velocity_controllers/JointVelocityController
     joint: right_wheel_2_joint
-    pid: {p: 110.0, i: 2.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}
 
   right_wheel_3_joint:
     type: velocity_controllers/JointVelocityController
     joint: right_wheel_3_joint
-    pid: {p: 110.0, i: 3.0, d: 1.0}
+    pid: {p: 100.0, i: 0.01, d: 1.0}

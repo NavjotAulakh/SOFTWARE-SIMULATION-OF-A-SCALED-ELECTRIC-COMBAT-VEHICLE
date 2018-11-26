@@ -11,14 +11,14 @@
     <visual>
       <geometry>
         <cylinder length="${wheelLength}" radius="${wheelRadius}"/>
-        <origin rpy="0 3.14592/2 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.12"/>
+        <origin rpy="0 ${3.14592/2} 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.12"/>
       </geometry>
       <material name="Black"/>
     </visual>
     <collision>
       <geometry>
          <cylinder length="${wheelLength}" radius="${wheelRadius}"/>
-         <origin rpy="0 3.14592/2 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.12"/>
+         <origin rpy="0 ${3.14592/2} 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.12"/>
       </geometry>
     </collision>
     <inertial>
