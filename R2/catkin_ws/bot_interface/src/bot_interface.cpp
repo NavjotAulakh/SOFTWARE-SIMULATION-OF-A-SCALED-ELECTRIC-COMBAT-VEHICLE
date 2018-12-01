@@ -11,7 +11,7 @@ using namespace std;
 
 geometry_msgs::Twist latestMsg;
 nav_msgs::Odometry odomMsg;
-
+int val = 0;
 int direction = 0;
 
 void botc_callback(const geometry_msgs::Twist& msg)
@@ -22,7 +22,9 @@ void botc_callback(const geometry_msgs::Twist& msg)
 
 void bots_callback(const nav_msgs::Odometry& msg)
 {
-  odomMsg.pose = msg.pose;
+  odomMsg = msg;
+  val = 1;
+
 }
 
 int main(int argc, char**argv)
@@ -45,11 +47,9 @@ int main(int argc, char**argv)
   ros::Subscriber sub2 = n.subscribe("/odom", 50, &bots_callback);
 
   tf::TransformBroadcaster broadcaster;
-  ros::Rate loop_rate(50);
+  ros::Rate loop_rate(20);
 /*
-
   ros::Time current_time, last_time;
-
   tf::TransformBroadcaster odom_broadcaster;
 
   double x = 0.0;
@@ -66,14 +66,25 @@ int main(int argc, char**argv)
 while(ros::ok())
   {
   // Broadcast transform from map to base_link
+
   double px = odomMsg.pose.pose.position.x;
   double py = odomMsg.pose.pose.position.y;
   double pz = odomMsg.pose.pose.position.z;
-    broadcaster.sendTransform(tf::StampedTransform(tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0, 0, 0)),
-        ros::Time::now(),"map", "odom"));
 
- broadcaster.sendTransform(tf::StampedTransform(tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(px, py, pz)),
-        ros::Time::now(),"map", "base_link"));
+  if (val == 1) 
+  {
+    double ox = odomMsg.pose.pose.orientation.x;
+    double oy = odomMsg.pose.pose.orientation.y;
+    double oz = odomMsg.pose.pose.orientation.z;
+    double ow = odomMsg.pose.pose.orientation.w;
+    
+    
+    broadcaster.sendTransform(tf::StampedTransform(tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0, 0, 0)),
+          ros::Time::now(),"map", "odom"));
+
+    broadcaster.sendTransform(tf::StampedTransform(tf::Transform(tf::Quaternion(ox, oy, oz, ow), tf::Vector3(px, py, pz)),
+          ros::Time::now(),"map", "base_link"));
+  }
 
     count+= 1;
     std_msgs::Float64 left;

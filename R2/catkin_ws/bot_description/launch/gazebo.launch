@@ -24,5 +24,33 @@
    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
 args="-urdf -model bot -param robot_description"/> 
 
+  <rosparam file="$(find bot_description)/config/controllers.yaml" command="load" />
+
+  <node name="bot_controller_spawner" pkg="controller_manager" type="spawner"
+    respawn="false" output="screen" ns="/bot" args="joint_state_controller
+        left_wheel_0_joint
+        left_wheel_1_joint
+        left_wheel_2_joint
+        left_wheel_3_joint
+        right_wheel_0_joint
+        right_wheel_1_joint
+        right_wheel_2_joint
+        right_wheel_3_joint"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/bot/joint_states" />
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <!-- Starting Joint state publisher node which will publish the
+  joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+    type="joint_state_publisher" >
+    <remap from="/joint_states" to="/bot/joint_states" />  
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
  
 </launch>
