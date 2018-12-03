@@ -9,14 +9,14 @@
 <xacro:macro name="wheel" params="side num reflect xv yv zv">
   <link name="${side}_${num}">
     <visual>
-      <origin rpy="0 ${3.14592/2} 0" xyz="${xv} ${yv} ${zv}"/>
+      <origin rpy="0 1.57079632679 0" xyz="${xv} ${yv} ${zv}"/>
       <geometry>
 	<mesh filename="package://bot_description/meshes/wheel.dae" />
       </geometry>
       <material name="Grey"/>
     </visual>
     <collision>
-	<origin rpy="0 ${3.14592/2} 0" xyz="${xv} ${yv} ${zv}"/>
+	<origin rpy="0 1.57079632679 0" xyz="${xv} ${yv} ${zv}"/>
         <geometry>
          <mesh filename="package://bot_description/meshes/wheel.dae" />
       </geometry>
@@ -33,7 +33,7 @@
     <limit effort="10000.0" velocity="100"/>
     <parent link="base_link"/>
     <child link="${side}_${num}"/>
-    <origin rpy="0 ${3.14592/2} 0" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.10"/>
+    <origin rpy="0 ${3.14592/2} 3.14159265359" xyz="${0.2 * reflect} ${0.3 - (0.2 * num)} -0.10"/>
   </joint>
 
   <gazebo reference="${side}_${num}">
@@ -72,7 +72,7 @@
 	<joint name="hokuyo_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="hokuyo_link"/>
-		<origin xyz="0.0 -0.3 0.20" rpy="0 0 -1.572" />
+		<origin xyz="0.0 0.3 0.20" rpy="0 0 1.572" />
 	</joint>
 
 	<gazebo reference="hokuyo_link">
@@ -121,14 +121,14 @@
       <geometry>
         <mesh filename="package://bot_description/meshes/carfullblended.dae"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="-0.01 -0.05 -0.08"/>
+      <origin rpy="0 0 3.14159265359" xyz="-0.01 -0.05 -0.08"/>
       <material name="grey"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://bot_description/meshes/carfullblended.dae"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="-0.01 -0.05 -0.08"/>
+      <origin rpy="0 0 3.14159265359" xyz="-0.01 -0.05 -0.08"/>
     </collision>
     
   </link>

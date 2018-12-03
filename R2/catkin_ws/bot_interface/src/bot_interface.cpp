@@ -14,10 +14,13 @@ nav_msgs::Odometry odomMsg;
 int val = 0;
 int direction = 0;
 
+bool called = false;
+
 void botc_callback(const geometry_msgs::Twist& msg)
 {
   latestMsg.linear = msg.linear;
   latestMsg.angular = msg.angular;
+  called = true;
 }
 
 void bots_callback(const nav_msgs::Odometry& msg)
@@ -61,7 +64,7 @@ int main(int argc, char**argv)
   double vth = 0.0;
 */
 
-  int count = 0;
+
 
 while(ros::ok())
   {
@@ -86,44 +89,49 @@ while(ros::ok())
           ros::Time::now(),"map", "base_link"));
   }
 
-    count+= 1;
-    std_msgs::Float64 left;
-    left.data = 0.0;
-    std_msgs::Float64 right;
-    right.data = 0.0;
-
-    if(latestMsg.linear.x != 0)
+    if (called)
     {
-      right.data = latestMsg.linear.x;
-      left.data = latestMsg.linear.x;
-    }
+      std_msgs::Float64 left;
+      std_msgs::Float64 right;
+      called = false;
+      left.data = 0.0;
+      right.data = 0.0;
 
-    if(latestMsg.linear.y != 0)
-    {
-      right.data += latestMsg.linear.y;
-      left.data += latestMsg.linear.y;
-    }
+      if(latestMsg.linear.x != 0)
+      {
+        right.data = latestMsg.linear.x;
+        left.data = latestMsg.linear.x;
+      }
 
-    if (latestMsg.angular.z > 0 )
-    {
-      right.data += latestMsg.angular.z;
-      left.data -= latestMsg.angular.z;
-    }
-    else if (latestMsg.angular.z < 0 )
-    {
-      left.data += latestMsg.angular.z;
-      right.data -= latestMsg.angular.z;
-    }
+      if(latestMsg.linear.y != 0)
+      {
+        right.data += latestMsg.linear.y;
+        left.data += latestMsg.linear.y;
+      }
 
-    RW0.publish(right);
-    RW1.publish(right);
-    RW2.publish(right);
-    RW3.publish(right);
+      if (latestMsg.angular.z > 0 )
+      {
+        left.data += latestMsg.angular.z;
+       
+      }
 
-    LW0.publish(left);
-    LW1.publish(left);
-    LW2.publish(left);
-    LW3.publish(left);
+      if (latestMsg.angular.z < 0 )
+      {
+        right.data -= latestMsg.angular.z;
+      }
+
+      left.data = left.data *10;
+      right.data = right.data *10;
+      RW0.publish(right);
+      RW1.publish(right);
+      RW2.publish(right);
+      RW3.publish(right);
+
+      LW0.publish(left);
+      LW1.publish(left);
+      LW2.publish(left);
+      LW3.publish(left);
+    }
 
     /*
 vx = latestMsg.linear.x;
