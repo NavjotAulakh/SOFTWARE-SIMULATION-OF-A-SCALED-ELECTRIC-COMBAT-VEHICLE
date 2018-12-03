@@ -71,7 +71,7 @@
     <visual>
       <origin rpy="0 1.57079632679 0" xyz="${xv} ${yv} ${zv}"/>
       <geometry>
-	<mesh filename="package://bot_description/meshes/wheel.dae" />
+	<mesh filename="package://jackal_description/meshes/wheel.dae" />
       </geometry>
       <material name="Grey"/>
     </visual>
