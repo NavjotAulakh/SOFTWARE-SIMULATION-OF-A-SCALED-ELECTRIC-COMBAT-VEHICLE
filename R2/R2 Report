@@ -16,6 +16,41 @@ The Rviz node will allow us to view the current status of the model, and offers 
 
 4. Estimated Cost of the project (5%)
 
+ESTIMATED COST OF THE PROJECT
+The Cost of this project includes resources, it could be people resources, equipments needed, General Cost of the project, Administrative cost, fees, Licenses and supplies. But in this case we don’t have costs for licenses and supplies. The list of cost becomes our estimate which would have to be approved by stakeholders. If approved the estimate becomes our budget.
+
+EQUIPMENTS PURCHASED
+PRICE
+RPLIDAR A2M8 360*Laser Scanner Sensor 
+
+357.40 CAD + TAX = 404.2 CAD
+
+The total Estimated Cost of the Project will = 404.2 CAD
+
+
+
+EFFORT DISTRIBUTION 
+
+Activities
+%effort
+Requirements
+10
+Specifications
+10
+Design
+20
+Implementation
+25
+Integration testing
+15
+Project Management
+10
+Documentation
+10
+TOTAL 
+100
+
+
 5. Updated Project Plan (2%) Navjot
 
 6. Contribution matrix
