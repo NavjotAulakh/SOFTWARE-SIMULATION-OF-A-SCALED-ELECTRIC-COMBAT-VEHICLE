@@ -88,7 +88,7 @@
     <limit effort="10000.0" velocity="100"/>
     <parent link="base_link"/>
     <child link="${side}_${num}"/>
-    <origin rpy="0 ${3.14592/2} 1.57079632679" xyz="${0.3 - (0.2 * num)} ${0.2 * reflect} 0.01"/>
+    <origin rpy="0 ${3.14592/2} 1.57079632679" xyz="${0.3 - (0.2 * num)} ${(0.2 * reflect) + 0.1} 0.01"/>
 
   </joint>
 
@@ -125,24 +125,67 @@
 <xacro:wheel2 side="right_wheel" num="2" reflect="1" xv="0" yv="0" zv="-0.02"/>
 <xacro:wheel2 side="right_wheel" num="3" reflect="1" xv="0" yv="0" zv="-0.02"/>
 
+
+<link name="hokuyo_link">
+        <visual>
+			    <origin rpy="0 0 0" xyz="0 0 0"/>
+			    <material name="blue"/>
+        </visual>
+    </link>
+
+	<joint name="hokuyo_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="hokuyo_link"/>
+		<origin xyz="0.22 0.1 0.31" rpy="0 0 0" />
+	</joint>
+
+	<gazebo reference="hokuyo_link">
+    <material>Gazebo/White</material>
+	    <sensor name="head_hokuyo_sensor" type="ray">
+	      <pose>0.05 0 0 0 0 0</pose>
+	      <visualize>true</visualize>
+	      <update_rate>40</update_rate>
+	      <ray>
+	        <scan>
+	          <horizontal>
+	            <samples>720</samples>
+	            <resolution>1</resolution>
+	            <min_angle>-1.570796</min_angle>
+	            <max_angle>1.570796</max_angle>
+	          </horizontal>
+	        </scan>
+	        <range>
+	          <min>0.10</min>
+	          <max>10.0</max>
+	          <resolution>0.001</resolution>
+	        </range>
+	      </ray>
+	      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_head_hokuyo_controller">
+	        <topicName>/scan</topicName>
+	        <frameName>hokuyo_link</frameName>
+	      </plugin>
+	    </sensor>
+  	</gazebo>
+
   <link name="base_link"></link>
 
   <joint name="base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0.1 0.1 0" rpy="0 0 0" />
+
     <parent link="base_link"/>
     <child link="chassis_link" />
   </joint>
 
   <link name="chassis_link">
     <visual>
-      <origin rpy="0 0 4.71238898039" xyz="-0.01 0 0.01"/>
+      <origin rpy="0 0 1.57079632679" xyz="-0.01 0 0.01"/>
       <geometry>
         <mesh filename="package://jackal_description/meshes/carfullblended.dae"/>
       </geometry>
       <material name="dark_grey" />
     </visual>
     <collision>
-      <origin rpy="0 0 4.71238898039" xyz="-0.01 0 0"/>
+       <origin rpy="0 0 1.57079632679" xyz="-0.01 0 0.01"/>
       <geometry>
          <mesh filename="package://jackal_description/meshes/carfullblended.dae"/>
       </geometry>
@@ -194,6 +237,7 @@
 
     </link>
 
+
     <link name="rear_fender_accessory_link"/>
     <joint name="rear_fender_accessory_joint" type="fixed">
       <origin xyz="0.25629 0 0.07455" rpy="${PI} 0 0" />
@@ -227,9 +271,6 @@
   <!-- TODO: Same note as applies to imu_link -->
   <link name="navsat_link">
     <visual>
-      <geometry>
-        <cylinder radius="0.026" length="0.016" />
-      </geometry>
       <origin xyz="0 0 0.008" />
       <material name="black" />
     </visual>
