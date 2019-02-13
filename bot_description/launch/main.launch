@@ -1,0 +1,11 @@
+<launch>
+  <arg name="model" default="$(find bot_description)/bot.urdf.xacro"/>
+  <arg name="rvizconfig" default="$(find bot_description)/rviz/urdf.rviz" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+  <node pkg="bot_interface" type="bot_interface" name="bot_interface" output="screen">
+  </node>
+
+</launch>
+
