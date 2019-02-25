@@ -18,6 +18,10 @@ cd ~/catkin_ws
 catkin_make
 
 4. Drop our files into your catkin_ws/src folder
+git clone https://github.com/RLiscanoUOIT/capstone-project-group-21.git
+cd capstone-project-group-21/
+git checkout jeff
+git pull origin jeff
 
 5. Install navigation stack
 sudo apt-get install ros-kinetic-navigation
