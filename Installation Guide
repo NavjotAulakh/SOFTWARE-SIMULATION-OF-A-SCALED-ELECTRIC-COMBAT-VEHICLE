@@ -46,4 +46,3 @@ catkin_make
 roslaunch bot_description gazebo.launch
 roslaunch bot_description rviz.launch
 roslaunch bot_2dnav amcl_demo.launch
-//sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control
