@@ -1,0 +1,19 @@
+<launch>
+
+  <!-- Run the map server -->
+ <arg name="map_file" default="$(find bot_2dnav)/maps/3rdfloor_world.yaml"/>
+ <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!--- Run Gazebo -->
+ <include file="$(find bot_description)/launch/gazebo.launch" />
+
+  <!--- Run Rviz -->
+ <include file="$(find bot_description)/launch/rviz.launch" />
+
+  <!--- Run AMCL -->
+ <include file="$(find bot_2dnav)/launch/amcl_config.launch" />
+
+  <!--- Run Move Base -->
+ <include file="$(find bot_2dnav)/launch/move_base.launch" />
+
+</launch>
