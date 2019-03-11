@@ -34,6 +34,7 @@
 
 /*
  * Author: Bence Magyar
+ * Modified for 8x8 by: Jeffrey Zhang
  */
 
 #include <cmath>
@@ -472,21 +473,21 @@ namespace diff_drive_controller{
     double rtcr = 1;
     if (curr_cmd.ang > 0 )
     {
-       double radius = (0.3/tan(fabs(curr_cmd.ang)));
+       double radius = fabs(0.3/tan(curr_cmd.ang));
        if (radius < 1) { radius = 1.0;}
-       ltcr = (radius - vehicleWidth/2) / radius;
-       rtcr = (radius + vehicleWidth/2) / radius;
+       ltcr = (radius - 0.2) / radius;
+       rtcr = (radius + 0.2) / radius;
     }
 
     if (curr_cmd.ang < 0)
     {
-       double radius = (0.3/tan(fabs(curr_cmd.ang)));
+       double radius = fabs(0.3/tan(curr_cmd.ang));
        if (radius < 1) { radius = 1.0;}
-       ltcr = (radius + vehicleWidth/2) / radius;
-       rtcr = (radius - vehicleWidth/2) / radius;
+       ltcr = (radius + 0.2) / radius;
+       rtcr = (radius - 0.2) / radius;
     }
-    const double vel_left = (curr_cmd.lin/lwr) * ltcr;
-    const double vel_right = (curr_cmd.lin/rwr) * rtcr;
+    const double vel_left = (curr_cmd.lin/0.07) * ltcr;
+    const double vel_right = (curr_cmd.lin/0.07) * rtcr;
 
 
     // Set wheels velocities:
@@ -497,20 +498,21 @@ namespace diff_drive_controller{
     }
 
     // Calculate wheel angles:
-    if (curr_cmd.ang > 0 )
+    if (curr_cmd.ang > 0.001 )
     {
-      double radius = (0.3/tan(curr_cmd.ang));
-      if (radius < 1) { radius = 1.0;}
-      const double lwa0 = -1 * atan(-0.3/(radius-(vehicleWidth/2)));
-      const double lwa1 = -1 * atan(-0.1/(radius-(vehicleWidth/2)));
-      const double lwa2 = -1 * atan(0.1/(radius-(vehicleWidth/2)));
-      const double lwa3 = -1 * atan(0.3/(radius-(vehicleWidth/2)));
+      double radius = fabs(0.3/tan(curr_cmd.ang));
+       if (radius < 1) { radius = 1.0;}
+      const double lwa0 = 1 * atan(0.3/(radius-0.2));
+      const double lwa1 = 1 * atan(0.1/(radius-0.2));
+      const double lwa2 = -1 * atan(0.1/(radius-0.2));
+      const double lwa3 = -1 * atan(0.3/(radius-0.2));
 
-      const double rwa0 = -1 * atan(-0.3/(radius+(vehicleWidth/2)));
-      const double rwa1 = -1 * atan(-0.1/(radius+(vehicleWidth/2)));
-      const double rwa2 = -1 * atan(0.1/(radius+(vehicleWidth/2)));
-      const double rwa3 = -1 * atan(0.3/(radius+(vehicleWidth/2)));
+      const double rwa0 = 1 * atan(0.3/(radius+0.2));
+      const double rwa1 = 1 * atan(0.1/(radius+0.2));
+      const double rwa2 = -1 * atan(0.1/(radius+0.2));
+      const double rwa3 = -1 * atan(0.3/(radius+0.2));
 
+      // To make turning faster, a minium of 0.01 rad/s is enforced.
       // Set wheel angles:
       LWRev_joints[0].setCommand(lwa0);
       LWRev_joints[1].setCommand(lwa1);
@@ -520,24 +522,24 @@ namespace diff_drive_controller{
       RWRev_joints[1].setCommand(rwa1);
       RWRev_joints[2].setCommand(rwa2);
       RWRev_joints[3].setCommand(rwa3);
-
-   
     }
 
-    else if (curr_cmd.ang < 0 )
+    else if (curr_cmd.ang < 0.001 )
     {
-      double radius = (0.3/tan(curr_cmd.ang));
-      if (radius > -1) { radius = -1.0;}
-      const double lwa0 = -1 * atan(-0.3/(radius-(vehicleWidth/2)));
-      const double lwa1 = -1 * atan(-0.1/(radius-(vehicleWidth/2)));
-      const double lwa2 = -1 * atan(0.1/(radius-(vehicleWidth/2)));
-      const double lwa3 = -1 * atan(0.3/(radius-(vehicleWidth/2)));
+      double radius = fabs(0.3/tan(curr_cmd.ang));
+       if (radius < 1) { radius = 1.0;}
+      const double lwa0 = -1 * atan(0.3/(radius+0.2));
+      const double lwa1 = -1 * atan(0.1/(radius+0.2));
+      const double lwa2 = 1 * atan(0.1/(radius+0.2));
+      const double lwa3 = 1 * atan(0.3/(radius+0.2));
 
-      const double rwa0 = -1 * atan(-0.3/(radius+(vehicleWidth/2)));
-      const double rwa1 = -1 * atan(-0.1/(radius+(vehicleWidth/2)));
-      const double rwa2 = -1 * atan(0.1/(radius+(vehicleWidth/2)));
-      const double rwa3 = -1 * atan(0.3/(radius+(vehicleWidth/2)));
+      const double rwa0 = -1 * atan(0.3/(radius-0.2));
+      const double rwa1 = -1 * atan(0.1/(radius-0.2));
+      const double rwa2 = 1 * atan(0.1/(radius-0.2));
+      const double rwa3 = 1 * atan(0.3/(radius-0.2));
 
+  
+      // To make turning faster, a minium of 0.01 rad/s is enforced.
       // Set wheel angles:
       LWRev_joints[0].setCommand(lwa0);
       LWRev_joints[1].setCommand(lwa1);
@@ -549,22 +551,6 @@ namespace diff_drive_controller{
       RWRev_joints[3].setCommand(rwa3);
     
     }
-
-    else
-    {
-
-      // Set wheel angles:
-      LWRev_joints[0].setCommand(LWR0);
-      LWRev_joints[1].setCommand(LWR1);
-      LWRev_joints[2].setCommand(LWR2);
-      LWRev_joints[3].setCommand(LWR3);
-      RWRev_joints[0].setCommand(RWR0);
-      RWRev_joints[1].setCommand(RWR1);
-      RWRev_joints[2].setCommand(RWR2);
-      RWRev_joints[3].setCommand(RWR3);
-
-    }
-
   }
 
   void DiffDriveController::starting(const ros::Time& time)
@@ -589,8 +575,7 @@ namespace diff_drive_controller{
     {
       left_wheel_joints_[i].setCommand(vel);
       right_wheel_joints_[i].setCommand(vel);
-      LWRev_joints[i].setCommand(vel);
-      RWRev_joints[i].setCommand(vel);
+
 
     }
   }
@@ -627,14 +612,24 @@ namespace diff_drive_controller{
   void DiffDriveController::jointStatesCallback(const JointStateConstPtr& state)
   {
     // Gradually set the wheel to 0 by reducing distance from center by 50% every tick.
-    LWR0 = 0.5 * state->position[1];
-    LWR1 = 0.5 * state->position[3];
-    LWR2 = 0.5 * state->position[5];
-    LWR3 = 0.5 * state->position[7];
-    RWR0 = 0.5 * state->position[9];
-    RWR1 = 0.5 * state->position[11];
-    RWR2 = 0.5 * state->position[13];
-    RWR3 = 0.5 * state->position[15];
+    LWR0 = state->position[1];
+    LWR1 = state->position[3];
+    LWR2 = state->position[5];
+    LWR3 = state->position[7];
+    RWR0 = state->position[9];
+    RWR1 = state->position[11];
+    RWR2 = state->position[13];
+    RWR3 = state->position[15];
+
+    // Set wheel angles:
+    LWRev_joints[0].setCommand(-LWR0);
+    LWRev_joints[1].setCommand(-LWR1);
+    LWRev_joints[2].setCommand(-LWR2);
+    LWRev_joints[3].setCommand(-LWR3);
+    RWRev_joints[0].setCommand(-RWR0);
+    RWRev_joints[1].setCommand(-RWR1);
+    RWRev_joints[2].setCommand(-RWR2);
+    RWRev_joints[3].setCommand(-RWR3);
    
   }
 

@@ -5,9 +5,9 @@
  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!--- Run AMCL -->
- <include file="$(find bot_2dnav)/launch/include/amcl.launch" />
+ <include file="$(find bot_2dnav)/launch/amcl_config.launch" />
 
   <!--- Run Move Base -->
- <include file="$(find bot_2dnav)/launch/include/move_base.launch" />
+ <include file="$(find bot_2dnav)/launch/move_base.launch" />
 
 </launch>

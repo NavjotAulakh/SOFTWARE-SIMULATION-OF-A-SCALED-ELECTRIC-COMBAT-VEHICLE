@@ -34,6 +34,7 @@
 
 /*
  * Author: Enrique Fernández
+ * Modified for 8x8 by: Jeffrey Zhang
  */
 
 #include <controller_interface/controller.h>
@@ -130,6 +131,7 @@ namespace diff_drive_controller{
     };
     realtime_tools::RealtimeBuffer<Commands> command_;
     Commands command_struct_;
+
     ros::Subscriber sub_command_;
     ros::Subscriber sub2;
 
@@ -178,6 +180,8 @@ namespace diff_drive_controller{
 
     /// Publish limited velocity:
     bool publish_cmd_;
+
+
 
     // A struct to hold dynamic parameters
     // set from dynamic_reconfigure server
