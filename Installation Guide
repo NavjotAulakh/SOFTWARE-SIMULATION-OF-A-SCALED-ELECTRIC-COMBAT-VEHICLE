@@ -36,7 +36,7 @@ sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
 
 
 8. Source catkin and export gpu settings
-NOTE: Replace [USERNAME] with your ubuntu username.
+NOTE: Replace [USERNAME] with your ubuntu username
 echo "source /home/[USERNAME]/catkin_ws/devel/setup.bash" >> ~/.bashrc
 echo "export SVGA_VGPU10=0" >> ~/.bashrc
 source ~/.bashrc
@@ -48,4 +48,12 @@ catkin_make
 10. Run
 roslaunch bot_description gazebo.launch
 roslaunch bot_description rviz.launch
-roslaunch bot_2dnav amcl_demo.launch
+roslaunch bot_2dnav amcl_demo.launc
+
+NOTE: If there are still build errors, consider running:
+sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+This will install all dependences of the catkin src folder, so it may
+require a lot of extra space.
