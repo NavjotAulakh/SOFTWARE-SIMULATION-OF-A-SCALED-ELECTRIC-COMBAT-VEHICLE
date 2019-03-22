@@ -339,7 +339,7 @@ namespace diff_drive_controller{
     }
 
     sub_command_ = controller_nh.subscribe("cmd_vel", 1, &DiffDriveController::cmdVelCallback, this);
-    sub2 = controller_nh.subscribe("bot/joint_states", 1, &DiffDriveController::jointStatesCallback, this);
+    sub2 = controller_nh.subscribe("joint_states", 1, &DiffDriveController::jointStatesCallback, this);
 
     // Initialize dynamic parameters
     DynamicParams dynamic_params;
@@ -497,8 +497,8 @@ namespace diff_drive_controller{
       right_wheel_joints_[i].setCommand(vel_right);
     }
 
-    // Calculate wheel angles:
-    if (curr_cmd.ang > 0.001 )
+    // Calculate the desired wheel angles:
+    if (curr_cmd.ang > 0.05 )
     {
       double radius = fabs(0.3/tan(curr_cmd.ang));
        if (radius < 1) { radius = 1.0;}
@@ -512,19 +512,19 @@ namespace diff_drive_controller{
       const double rwa2 = -1 * atan(0.1/(radius+0.2));
       const double rwa3 = -1 * atan(0.3/(radius+0.2));
 
-      // To make turning faster, a minium of 0.01 rad/s is enforced.
       // Set wheel angles:
-      LWRev_joints[0].setCommand(lwa0);
-      LWRev_joints[1].setCommand(lwa1);
-      LWRev_joints[2].setCommand(lwa2);
-      LWRev_joints[3].setCommand(lwa3);
-      RWRev_joints[0].setCommand(rwa0);
-      RWRev_joints[1].setCommand(rwa1);
-      RWRev_joints[2].setCommand(rwa2);
-      RWRev_joints[3].setCommand(rwa3);
+      LWRev_joints[0].setCommand(lwa0-LWR0);
+      LWRev_joints[1].setCommand(lwa1-LWR1);
+      LWRev_joints[2].setCommand(lwa2-LWR2);
+      LWRev_joints[3].setCommand(lwa3-LWR3);
+      RWRev_joints[0].setCommand(rwa0-RWR0);
+      RWRev_joints[1].setCommand(rwa1-RWR1);
+      RWRev_joints[2].setCommand(rwa2-RWR2);
+      RWRev_joints[3].setCommand(rwa3-RWR3);
+
     }
 
-    else if (curr_cmd.ang < 0.001 )
+    else if (curr_cmd.ang < 0.05 )
     {
       double radius = fabs(0.3/tan(curr_cmd.ang));
        if (radius < 1) { radius = 1.0;}
@@ -538,18 +538,29 @@ namespace diff_drive_controller{
       const double rwa2 = 1 * atan(0.1/(radius-0.2));
       const double rwa3 = 1 * atan(0.3/(radius-0.2));
 
-  
-      // To make turning faster, a minium of 0.01 rad/s is enforced.
       // Set wheel angles:
-      LWRev_joints[0].setCommand(lwa0);
-      LWRev_joints[1].setCommand(lwa1);
-      LWRev_joints[2].setCommand(lwa2);
-      LWRev_joints[3].setCommand(lwa3);
-      RWRev_joints[0].setCommand(rwa0);
-      RWRev_joints[1].setCommand(rwa1);
-      RWRev_joints[2].setCommand(rwa2);
-      RWRev_joints[3].setCommand(rwa3);
+      LWRev_joints[0].setCommand(lwa0-LWR0);
+      LWRev_joints[1].setCommand(lwa1-LWR1);
+      LWRev_joints[2].setCommand(lwa2-LWR2);
+      LWRev_joints[3].setCommand(lwa3-LWR3);
+      RWRev_joints[0].setCommand(rwa0-RWR0);
+      RWRev_joints[1].setCommand(rwa1-RWR1);
+      RWRev_joints[2].setCommand(rwa2-RWR2);
+      RWRev_joints[3].setCommand(rwa3-RWR3);
     
+    }
+
+    else
+    {
+      // Set wheel angles:
+      LWRev_joints[0].setCommand(0-LWR0);
+      LWRev_joints[1].setCommand(0-LWR1);
+      LWRev_joints[2].setCommand(0-LWR2);
+      LWRev_joints[3].setCommand(0-LWR3);
+      RWRev_joints[0].setCommand(0-RWR0);
+      RWRev_joints[1].setCommand(0-RWR1);
+      RWRev_joints[2].setCommand(0-RWR2);
+      RWRev_joints[3].setCommand(0-RWR3);
     }
   }
 
@@ -620,16 +631,6 @@ namespace diff_drive_controller{
     RWR1 = state->position[11];
     RWR2 = state->position[13];
     RWR3 = state->position[15];
-
-    // Set wheel angles:
-    LWRev_joints[0].setCommand(-LWR0);
-    LWRev_joints[1].setCommand(-LWR1);
-    LWRev_joints[2].setCommand(-LWR2);
-    LWRev_joints[3].setCommand(-LWR3);
-    RWRev_joints[0].setCommand(-RWR0);
-    RWRev_joints[1].setCommand(-RWR1);
-    RWRev_joints[2].setCommand(-RWR2);
-    RWRev_joints[3].setCommand(-RWR3);
    
   }
 
