@@ -2,6 +2,7 @@
 #include "ros/ros.h"
 #include <std_msgs/Float64.h>
 #include <std_msgs/Int32.h>
+#include <sensor_msgs/JointState.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 #include <tf/transform_broadcaster.h>
@@ -11,6 +12,7 @@ using namespace std;
 
 geometry_msgs::Twist latestMsg;
 nav_msgs::Odometry odomMsg;
+sensor_msgs::JointState statesMsg;
 int val = 0;
 int direction = 0;
 
@@ -41,17 +43,26 @@ void bots_callback(const nav_msgs::Odometry& msg)
 
 }
 
+
+void jointStatesCallback(const sensor_msgs::JointState& msg)
+{
+  statesMsg = msg;
+}
+
+
 int main(int argc, char**argv)
 {
   ROS_INFO("Starting bot_interface");
   ros::init(argc, argv, "bot_commander");
   ros::NodeHandle n;
   ros::Publisher CMD = n.advertise<geometry_msgs::Twist>("/bot/bot_velocity_controller/cmd_vel", 50);  
+  ros::Publisher jointStates = n.advertise<sensor_msgs::JointState>("/bot/bot_velocity_controller/joint_states", 50);  
 
   //ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
 
   ros::Subscriber sub = n.subscribe("/cmd_vel", 50, &botc_callback);
   ros::Subscriber sub2 = n.subscribe("/odom", 50, &bots_callback);
+  ros::Subscriber sub3 = n.subscribe("/bot/joint_states", 50, &jointStatesCallback);
 
   tf::TransformBroadcaster broadcaster;
   ros::Rate loop_rate(20);
@@ -108,7 +119,7 @@ while(ros::ok())
       CMD.publish(latestMsg);
     }
 
-   
+    jointStates.publish(statesMsg);
     ros::spinOnce();
 
   }
