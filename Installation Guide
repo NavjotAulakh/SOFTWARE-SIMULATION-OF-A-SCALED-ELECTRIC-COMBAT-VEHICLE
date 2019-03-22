@@ -50,10 +50,17 @@ roslaunch bot_description gazebo.launch
 roslaunch bot_description rviz.launch
 roslaunch bot_2dnav amcl_demo.launc
 
-NOTE: If there are still build errors, consider running:
+*TROUBLESHOOTING*
+For most build errors:
 sudo apt-get install python-rosdep
 sudo rosdep init
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
-This will install all dependences of the catkin src folder, so it may
-require a lot of extra space.
+
+Generating *.cfg failed, permission denied:
+This one is a rare error that comes from extracting the files. You need to add executable permissions for the .cfg files.
+Example "exec: /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg: Permission denied" Error is resolved with:
+sudo chmod +x /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg
+
+
+
