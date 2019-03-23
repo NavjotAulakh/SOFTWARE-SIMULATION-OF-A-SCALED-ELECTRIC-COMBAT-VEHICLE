@@ -31,7 +31,6 @@ sudo apt-get install ros-kinetic-teb-local-planner
 
 7. Install gazebo_ros_controllers and packages
 sudo apt-get install ros-kinetic-gazebo-ros-pkgs
-
 sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
 
 
