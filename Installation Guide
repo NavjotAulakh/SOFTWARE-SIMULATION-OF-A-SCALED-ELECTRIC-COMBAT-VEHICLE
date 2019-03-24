@@ -57,9 +57,13 @@ rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 
 Generating *.cfg failed, permission denied:
-This one is a rare error that comes from extracting the files. You need to add executable permissions for the .cfg files.
+This one is an error that comes from extracting the gazebo_ros_control_pkg files from an archive. You need to add executable permissions for the .cfg files.
 Example "exec: /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg: Permission denied" Error is resolved with:
 sudo chmod +x /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg
+Alternative: Clone the gazebo ros packages again.
+Delete your current gazebo_ros_pkgs folder.
+cd ~/catkin_ws/src
+git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b kinetic-devel
 
 
 
