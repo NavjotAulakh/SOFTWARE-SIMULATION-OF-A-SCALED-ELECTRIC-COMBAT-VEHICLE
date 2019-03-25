@@ -47,7 +47,7 @@ catkin_make
 10. Run
 roslaunch bot_description gazebo.launch
 roslaunch bot_description rviz.launch
-roslaunch bot_2dnav amcl_demo.launc
+roslaunch bot_2dnav amcl_demo.launch
 
 *TROUBLESHOOTING*
 For most build errors:
