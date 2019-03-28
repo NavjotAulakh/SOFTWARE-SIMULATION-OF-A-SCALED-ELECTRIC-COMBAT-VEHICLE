@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="scan_topic" default="front/scan" />
+  <arg name="scan_topic" default="/bot/scan" />
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
 
@@ -17,7 +17,7 @@
     <param name="maxUrange" value="5.0"/>
 
     <!-- The maximum range of the sensor. If regions with no obstacles within the range of the sensor should appear as free space in the map, set maxUrange < maximum range of the real sensor <= maxRange -->
-    <param name="maxRange" value="10.0"/>
+    <param name="maxRange" value="15.0"/>
 
     <param name="sigma" value="0.05"/>
     <param name="kernelSize" value="1"/>
