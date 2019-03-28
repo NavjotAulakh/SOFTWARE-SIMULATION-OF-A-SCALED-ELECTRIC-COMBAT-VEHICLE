@@ -513,14 +513,14 @@ namespace diff_drive_controller{
       const double rwa3 = -1 * atan(0.3/(radius+0.2));
 
       // Set wheel angles:
-      LWRev_joints[0].setCommand(lwa0-LWR0);
-      LWRev_joints[1].setCommand(lwa1-LWR1);
-      LWRev_joints[2].setCommand(lwa2-LWR2);
-      LWRev_joints[3].setCommand(lwa3-LWR3);
-      RWRev_joints[0].setCommand(rwa0-RWR0);
-      RWRev_joints[1].setCommand(rwa1-RWR1);
-      RWRev_joints[2].setCommand(rwa2-RWR2);
-      RWRev_joints[3].setCommand(rwa3-RWR3);
+      LWRev_joints[0].setCommand( (lwa0 > LWR0) ? (0.1) : (-0.1) );
+      LWRev_joints[1].setCommand( (lwa1 > LWR1) ? (0.1) : (-0.1) );
+      LWRev_joints[2].setCommand( (lwa2 > LWR2) ? (0.1) : (-0.1) );
+      LWRev_joints[3].setCommand( (lwa3 > LWR3) ? (0.1) : (-0.1) );
+      RWRev_joints[0].setCommand( (rwa0 > RWR0) ? (0.1) : (-0.1) );
+      RWRev_joints[1].setCommand( (rwa1 > RWR1) ? (0.1) : (-0.1) );
+      RWRev_joints[2].setCommand( (rwa2 > RWR2) ? (0.1) : (-0.1) );
+      RWRev_joints[3].setCommand( (rwa3 > RWR3) ? (0.1) : (-0.1) );
 
     }
 
@@ -539,28 +539,28 @@ namespace diff_drive_controller{
       const double rwa3 = 1 * atan(0.3/(radius-0.2));
 
       // Set wheel angles:
-      LWRev_joints[0].setCommand(lwa0-LWR0);
-      LWRev_joints[1].setCommand(lwa1-LWR1);
-      LWRev_joints[2].setCommand(lwa2-LWR2);
-      LWRev_joints[3].setCommand(lwa3-LWR3);
-      RWRev_joints[0].setCommand(rwa0-RWR0);
-      RWRev_joints[1].setCommand(rwa1-RWR1);
-      RWRev_joints[2].setCommand(rwa2-RWR2);
-      RWRev_joints[3].setCommand(rwa3-RWR3);
+      LWRev_joints[0].setCommand( (lwa0 > LWR0) ? (0.1) : (-0.1) );
+      LWRev_joints[1].setCommand( (lwa1 > LWR1) ? (0.1) : (-0.1) );
+      LWRev_joints[2].setCommand( (lwa2 > LWR2) ? (0.1) : (-0.1) );
+      LWRev_joints[3].setCommand( (lwa3 > LWR3) ? (0.1) : (-0.1) );
+      RWRev_joints[0].setCommand( (rwa0 > RWR0) ? (0.1) : (-0.1) );
+      RWRev_joints[1].setCommand( (rwa1 > RWR1) ? (0.1) : (-0.1) );
+      RWRev_joints[2].setCommand( (rwa2 > RWR2) ? (0.1) : (-0.1) );
+      RWRev_joints[3].setCommand( (rwa3 > RWR3) ? (0.1) : (-0.1) );
     
     }
 
     else
     {
       // Set wheel angles:
-      LWRev_joints[0].setCommand(0-LWR0);
-      LWRev_joints[1].setCommand(0-LWR1);
-      LWRev_joints[2].setCommand(0-LWR2);
-      LWRev_joints[3].setCommand(0-LWR3);
-      RWRev_joints[0].setCommand(0-RWR0);
-      RWRev_joints[1].setCommand(0-RWR1);
-      RWRev_joints[2].setCommand(0-RWR2);
-      RWRev_joints[3].setCommand(0-RWR3);
+      LWRev_joints[0].setCommand( (0 > LWR0) ? (0.1) : (-0.1) );
+      LWRev_joints[1].setCommand( (0 > LWR1) ? (0.1) : (-0.1) );
+      LWRev_joints[2].setCommand( (0 > LWR2) ? (0.1) : (-0.1) );
+      LWRev_joints[3].setCommand( (0 > LWR3) ? (0.1) : (-0.1) );
+      RWRev_joints[0].setCommand( (0 > RWR0) ? (0.1) : (-0.1) );
+      RWRev_joints[1].setCommand( (0 > RWR1) ? (0.1) : (-0.1) );
+      RWRev_joints[2].setCommand( (0 > RWR2) ? (0.1) : (-0.1) );
+      RWRev_joints[3].setCommand( (0 > RWR3) ? (0.1) : (-0.1) );
     }
   }
 
@@ -631,7 +631,8 @@ namespace diff_drive_controller{
     RWR1 = state->position[11];
     RWR2 = state->position[13];
     RWR3 = state->position[15];
-   
+    //ROS_INFO_NAMED(name_, "Joints updated." );
+
   }
 
   bool DiffDriveController::getWheelNames(ros::NodeHandle& controller_nh,
