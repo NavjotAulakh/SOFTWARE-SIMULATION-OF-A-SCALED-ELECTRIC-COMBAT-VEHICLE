@@ -1,0 +1,3 @@
+   <node pkg="bot_interface" type="bot_interface" name="bot_interface" output="screen">
+   </node>
+

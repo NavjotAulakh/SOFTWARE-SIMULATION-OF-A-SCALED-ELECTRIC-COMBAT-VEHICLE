@@ -1,0 +1,7 @@
+<launch>
+
+  <!--- Run gmapping -->
+  <include file="$(find bot_2dnav)/launch/include/gmapping.launch" />
+
+
+</launch>

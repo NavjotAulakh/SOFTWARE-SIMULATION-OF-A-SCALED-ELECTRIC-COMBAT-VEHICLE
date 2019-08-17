@@ -1,0 +1,69 @@
+This is the installation guide for compiling a simulation of an 8x8 electric vehicle.
+Written by: Jeffrey Zhang
+
+Before you begin: 
+- You require at least 2GB memory to compile the files.
+- You need more then 10 GB of hard drive space.
+
+1. Install ubuntu 16.04
+
+2. Install ros kinetic kame
+Follow this guide closely: http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+3. Create catkin workspace
+Example procedure that creates workspace at the root of the user's home folder.
+NOTE: The rest of this guide assumes you put your catkin_ws folder in your home folder.
+mkdir ~/catkin_ws/src
+cd ~/catkin_ws
+catkin_make
+
+4. Drop our files into your catkin_ws/src folder
+git clone https://github.com/RLiscanoUOIT/capstone-project-group-21.git
+cd capstone-project-group-21/
+git checkout jeff
+git pull origin jeff
+
+5. Install navigation stack
+sudo apt-get install ros-kinetic-navigation
+
+6. Install teb planner
+sudo apt-get install ros-kinetic-teb-local-planner
+
+7. Install gazebo_ros_controllers and packages
+sudo apt-get install ros-kinetic-gazebo-ros-pkgs
+sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
+
+
+8. Source catkin and export gpu settings
+NOTE: Replace [USERNAME] with your ubuntu username
+echo "source /home/[USERNAME]/catkin_ws/devel/setup.bash" >> ~/.bashrc
+echo "export SVGA_VGPU10=0" >> ~/.bashrc
+source ~/.bashrc
+
+9. Compile our files
+cd ~/catkin_ws
+catkin_make
+
+10. Run
+roslaunch bot_description gazebo.launch
+roslaunch bot_description rviz.launch
+roslaunch bot_2dnav amcl_demo.launch
+
+*TROUBLESHOOTING*
+For most build errors:
+sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+
+Generating *.cfg failed, permission denied:
+This one is an error that comes from extracting the gazebo_ros_control_pkg files from an archive. You need to add executable permissions for the .cfg files.
+Example "exec: /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg: Permission denied" Error is resolved with:
+sudo chmod +x /home/ayumu/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg
+Alternative: Clone the gazebo ros packages again.
+Delete your current gazebo_ros_pkgs folder.
+cd ~/catkin_ws/src
+git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b kinetic-devel
+
+
+

@@ -1,0 +1,48 @@
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="model" default="$(find bot_description)/bot.urdf.xacro"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find bot_description)/world/3rdfloor"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <param name="/bot/robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" ns="/bot" respawn="false" output="screen"
+args="-urdf -model bot -param robot_description"/> 
+
+  <rosparam file="$(find bot_description)/config/controllers.yaml" command="load" />
+
+  <node name="bot_controller_spawner" pkg="controller_manager" type="spawner"
+    respawn="false" output="screen" ns="/bot" args="bot_velocity_controller joint_state_controller"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher"
+    respawn="false" output="screen" ns="bot">
+    <remap from="/joint_states" to="/bot/joint_states" />
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <!-- Starting Joint state publisher node which will publish the
+  joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+    type="joint_state_publisher" ns="bot" >
+    <remap from="/joint_states" to="/bot/joint_states" />  
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+ 
+</launch>
